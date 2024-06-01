@@ -1,29 +1,33 @@
 package projectBE1.java;
 
+import java.util.Scanner;
+
 public class Book implements IActivities {
+
+	Scanner scanner = new Scanner(System.in);
 
 	protected String ISBN;
 	protected String title;
-	protected double price;
+	protected String price;
 	protected String authorName;
-	protected String bookID;
+	protected int bookID = 0;
 
 	public Book() {
 
 	}
 
-	public Book(String iSBN, String title, double price, String authorName) {
+	public Book(String iSBN, String title, String price, String authorName) {
 		ISBN = iSBN;
 		this.title = title;
 		this.price = price;
 		this.authorName = authorName;
 	}
 
-	public String getBookID() {
+	public int getBookID() {
 		return bookID;
 	}
 
-	public void setBookID(String bookID) {
+	public void setBookID(int bookID) {
 		this.bookID = bookID;
 	}
 
@@ -43,11 +47,11 @@ public class Book implements IActivities {
 		this.title = title;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
@@ -59,21 +63,39 @@ public class Book implements IActivities {
 		this.authorName = authorName;
 	}
 
-	public Book addBook(String ISBN, String title, double price, String authorName) {
-		Book bookObj = new Book(ISBN, title, price, authorName);
-		return bookObj;
-	}
-
 	public void showBookInfo(Book book) {
+		System.out.println("BookID : " + book.getBookID());
 		System.out.println("ISBN : " + book.getISBN());
 		System.out.println("Title : " + book.getTitle());
 		System.out.println("Price : " + book.getPrice());
 		System.out.println("Author name : " + book.getAuthorName());
 	}
 
+	public String toString() {
+		return "BookID : " + bookID + "\n ISBN = " + ISBN + "\n title=" + title + "\n price=" + price + "\n authorName="
+				+ authorName + "\n\n\n";
+	}
+
+	@Override
+	public void addBook() {
+		bookID++;
+
+		System.out.print("Enter the new book ISBN : ");
+		this.ISBN = scanner.nextLine();
+
+		System.out.print("Enter the new book title : ");
+		this.title = scanner.nextLine();
+
+		System.out.print("Enter the new book price : ");
+		this.price = scanner.nextLine();
+
+		System.out.print("Enter the book author : ");
+		this.authorName = scanner.nextLine();
+
+	}
+
 	@Override
 	public void deleteBook() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -97,17 +119,6 @@ public class Book implements IActivities {
 
 	@Override
 	public void storeAuthorDataToFile() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String toString() {
-		return "Book [ISBN=" + ISBN + ", title=" + title + ", price=" + price + ", authorName=" + authorName + "]";
-	}
-
-	@Override
-	public void addBook() {
 		// TODO Auto-generated method stub
 
 	}

@@ -13,4 +13,6 @@ public interface IActivities {
 
 	void storeAuthorDataToFile();
 
+	void updateBook(int bookID);
+
 }
