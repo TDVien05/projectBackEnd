@@ -100,8 +100,7 @@ public class Book implements IActivities {
 	}
 
 	@Override
-	public void updateBook() {
-		// TODO Auto-generated method stub
+	public void updateBook(int bookID) {
 
 	}
 

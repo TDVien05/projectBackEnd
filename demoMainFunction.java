@@ -34,6 +34,11 @@ public class demoMainFunction {
 					arrBook.add(bookObj);
 				} while (checkAddBook != 0);
 			}
+			if (flag == 3) {
+				System.out.println("Enter BookID you want to edit : ");
+				int editBookID = scanner.nextInt();
+
+			}
 		} while (flag != 5);
 	}
 }
