@@ -75,21 +75,21 @@ public class Book implements IActivities {
 		this.title = scanner.nextLine();
 
 		System.out.print("Enter the new book price : ");
-		this.price = scanner.nextDouble();
+		int check = 1;
+		do {
+			try {
+				this.price = scanner.nextDouble();
+				scanner.nextLine();
+				check = 0;
+			} catch (Exception e) {
+				System.out.println("Invalid price. Enter again !!!");
+				System.out.print("Enter price again : ");
+				scanner.next();
+			}
+		} while (check == 1);
 
 		System.out.print("Enter the book author : ");
 		this.authorName = scanner.nextLine();
-
-	}
-
-	@Override
-	public Book deleteBook(Book book) {
-		return book;
-	}
-
-	@Override
-	public void searchBook() {
-		// TODO Auto-generated method stub
 
 	}
 
