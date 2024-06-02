@@ -3,9 +3,7 @@ package projectBE1.java;
 public interface IActivities {
 	void addBook();
 
-	void deleteBook();
-
-	void updateBook();
+	void deleteBook(String title);
 
 	void searchBook();
 
@@ -13,6 +11,6 @@ public interface IActivities {
 
 	void storeAuthorDataToFile();
 
-	void updateBook(int bookID);
+	Book updateBook(Book book);
 
 }

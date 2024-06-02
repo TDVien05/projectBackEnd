@@ -22,8 +22,7 @@ public class demoMainFunction {
 				for (int i = 0; i < arrBook.size(); i++) {
 					System.out.println(arrBook.toString());
 				}
-			}
-			if (flag == 2) {
+			} else if (flag == 2) {
 				System.out.println("========================ADD BOOK========================");
 				do {
 					Book bookObj = new Book();
@@ -33,10 +32,24 @@ public class demoMainFunction {
 					scanner.nextLine();
 					arrBook.add(bookObj);
 				} while (checkAddBook != 0);
-			}
-			if (flag == 3) {
-				System.out.println("Enter BookID you want to edit : ");
-				int editBookID = scanner.nextInt();
+			} else if (flag == 3) {
+				int checkEdit = 1;
+				for (int i = 0; i < arrBook.size(); i++) {
+					System.out.println(arrBook.toString());
+				}
+				do {
+					for (int i = 0; i < arrBook.size(); i++) {
+						System.out.println(i + arrBook.toString());
+					}
+					System.out.print("Enter book ID you want to edit : ");
+					int bookID = scanner.nextInt();
+					scanner.nextLine();
+					arrBook.get(bookID).updateBook(arrBook.get(bookID));
+					System.out.print("Do you want to edit more book || 0 : No || 1 : Yes : ");
+					checkEdit = scanner.nextInt();
+					scanner.nextLine();
+				} while (checkEdit == 1);
+			} else if (flag == 4) {
 
 			}
 		} while (flag != 5);
