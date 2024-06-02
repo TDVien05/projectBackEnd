@@ -16,7 +16,7 @@ public class demoMainFunction {
 			System.out.println("2 : Add new book");
 			System.out.println("3 : Editing a book");
 			System.out.println("4 : Delete a book");
-			System.out.println("5 : Store book to file");
+			System.out.println("5 : Store book to file and exit");
 			System.out.println("6 : Exits");
 			System.out.print("Choose your option : ");
 			flag = scanner.nextInt();
@@ -77,6 +77,7 @@ public class demoMainFunction {
 			} else if (flag == 5) {
 				Book bookObj = new Book();
 				bookObj.storeDataToFile(arrBook);
+				System.out.println("========================THANK YOU FOR YOUR VISITING========================");
 			} else if (flag == 6) {
 				System.out.println("========================THANK YOU FOR YOUR VISITING========================");
 				System.exit(0);

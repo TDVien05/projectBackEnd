@@ -1,14 +1,9 @@
-ISBN = gfsf
+ISBN = fsfds
  title=dfsdf
- price=12.0
- authorName=fsdfd
+ price=1222.0
+ authorName=fsdf
 
 
-
-ISBN = vsdfdf
- title=fsf
- price=124.0
- authorName=fdsf
 
 
 

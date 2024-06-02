@@ -112,13 +112,17 @@ public class Book implements IActivities {
 	public void storeDataToFile(ArrayList<Book> arrBook) throws IOException {
 		PrintWriter pw = new PrintWriter("D:\\practice_java\\src\\projectBE1\\java\\Book.txt", "UTF-8");
 		try {
-			for (Book lines : arrBook) {
-				pw.println(lines);
+
+			for (int i = 0; i < arrBook.size(); i++) {
+				pw.println(arrBook.get(i));
 			}
+			pw.println("\n");
 			pw.flush();
 			pw.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
+			scanner.next();
 		}
 	}
 
