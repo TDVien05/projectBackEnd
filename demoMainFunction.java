@@ -44,14 +44,37 @@ public class demoMainFunction {
 					System.out.print("Enter book ID you want to edit : ");
 					int bookID = scanner.nextInt();
 					scanner.nextLine();
-					arrBook.get(bookID).updateBook(arrBook.get(bookID));
+					if (bookID >= arrBook.size() || bookID < 0) {
+						System.out.println("Book does not exist");
+					} else {
+						arrBook.get(bookID).updateBook(arrBook.get(bookID));
+					}
 					System.out.print("Do you want to edit more book || 0 : No || 1 : Yes : ");
 					checkEdit = scanner.nextInt();
 					scanner.nextLine();
 				} while (checkEdit == 1);
 			} else if (flag == 4) {
-
+				int bookDelete, checkDelete, stillDelete;
+				for (int i = 0; i < arrBook.size(); i++) {
+					System.out.println(i + arrBook.toString());
+					System.out.print("Enter book ID you want to delete : ");
+					bookDelete = scanner.nextInt();
+					scanner.nextLine();
+					System.out.print("Are you sure to delete || 0 : No || 1 : Yes || Enter your choice : ");
+					checkDelete = scanner.nextInt();
+					scanner.nextLine();
+					if (checkAddBook == 1) {
+						arrBook.remove(bookDelete);
+						System.out.println("Deleted successfully");
+					} else
+						System.exit(0);
+				}
+			} else if (flag == 5)
+				System.exit(0);
+			else {
+				System.out.println("Invalid value. Enter again !!! ");
 			}
 		} while (flag != 5);
 	}
+
 }

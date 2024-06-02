@@ -83,8 +83,8 @@ public class Book implements IActivities {
 	}
 
 	@Override
-	public void deleteBook(String title) {
-
+	public Book deleteBook(Book book) {
+		return book;
 	}
 
 	@Override

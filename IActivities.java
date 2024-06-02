@@ -3,7 +3,7 @@ package projectBE1.java;
 public interface IActivities {
 	void addBook();
 
-	void deleteBook(String title);
+	Book deleteBook(Book book);
 
 	void searchBook();
 
