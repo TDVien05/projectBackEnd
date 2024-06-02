@@ -1,5 +1,8 @@
 package projectBE1.java;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Book implements IActivities {
@@ -54,13 +57,6 @@ public class Book implements IActivities {
 		this.authorName = authorName;
 	}
 
-	public void showBookInfo(Book book) {
-		System.out.println("ISBN : " + book.getISBN());
-		System.out.println("Title : " + book.getTitle());
-		System.out.println("Price : " + book.getPrice());
-		System.out.println("Author name : " + book.getAuthorName());
-	}
-
 	public String toString() {
 		return "ISBN = " + ISBN + "\n title=" + title + "\n price=" + price + "\n authorName=" + authorName + "\n\n\n";
 	}
@@ -94,18 +90,6 @@ public class Book implements IActivities {
 	}
 
 	@Override
-	public void storeBookDataToFile() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void storeAuthorDataToFile() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public Book updateBook(Book book) {
 		System.out.print("Enter new title : ");
 		book.title = scanner.nextLine();
@@ -117,6 +101,25 @@ public class Book implements IActivities {
 		System.out.print("Enter new author : ");
 		book.authorName = scanner.nextLine();
 		return book;
+	}
+
+	@Override
+	public void uploadDataFromFile(Book book) throws IOException {
+
+	}
+
+	@Override
+	public void storeDataToFile(ArrayList<Book> arrBook) throws IOException {
+		PrintWriter pw = new PrintWriter("D:\\practice_java\\src\\projectBE1\\java\\Book.txt", "UTF-8");
+		try {
+			for (Book lines : arrBook) {
+				pw.println(lines);
+			}
+			pw.flush();
+			pw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

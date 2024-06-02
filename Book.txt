@@ -1,0 +1,14 @@
+ISBN = gfsf
+ title=dfsdf
+ price=12.0
+ authorName=fsdfd
+
+
+
+ISBN = vsdfdf
+ title=fsf
+ price=124.0
+ authorName=fdsf
+
+
+
