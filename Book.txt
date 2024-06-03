@@ -1,6 +1,7 @@
-ISBN = rere
- title=wrwer
- price=1.2324342E7
- authorName=gdgf
+ISBN = 978-3-16-148410-0
+title = Vợ nhặt
+price = 125.345
+authorName = Ngô Tất Tố
+
 
 

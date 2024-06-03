@@ -1,7 +1,6 @@
 package projectBE1.java;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,7 +60,8 @@ public class Book implements IActivities {
 	}
 
 	public String toString() {
-		return "ISBN = " + ISBN + "\n title=" + title + "\n price=" + price + "\n authorName=" + authorName + "\n\n\n";
+		return "ISBN = " + ISBN + "\n" + "title = " + title + "\n" + "price = " + price + "\n" + "authorName = "
+				+ authorName + "\n\n";
 	}
 
 	@Override
@@ -99,53 +99,68 @@ public class Book implements IActivities {
 		System.out.print("Enter new ISBN : ");
 		book.ISBN = scanner.nextLine();
 		System.out.print("Enter new price : ");
-		book.price = scanner.nextDouble();
-		scanner.nextLine();
+		int check = 1;
+		do {
+			try {
+				this.price = scanner.nextDouble();
+				scanner.nextLine();
+				check = 0;
+			} catch (Exception e) {
+				System.out.println("Invalid price. Enter again !!!");
+				System.out.print("Enter price again : ");
+				scanner.next();
+			}
+		} while (check == 1);
 		System.out.print("Enter new author : ");
 		book.authorName = scanner.nextLine();
 		return book;
 	}
 
 	@Override
-	public void uploadDataFromFile() throws FileNotFoundException {
-//		FileReader fr = new FileReader("Book.txt");
-//		BufferedReader br = new BufferedReader(fr);
-//		String line = "";
-//		while (true) {
-//			line = br.readLine();
-//			if (line == null)
-//				break;
-//			System.out.println(line);
-//		}
-		FileReader fr = new FileReader("D:\\practice_java\\src\\projectBE1\\java\\Book.txt");
-		BufferedReader br = new BufferedReader(fr);
-		try {
-			String line = "";
-			while (true) {
-				line = br.readLine();
-				if (line == null)
-					break;
-				System.out.println(line);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
 	public void storeDataToFile(ArrayList<Book> arrBook) throws IOException {
+
 		PrintWriter pw = new PrintWriter("D:\\practice_java\\src\\projectBE1\\java\\Book.txt", "UTF-8");
 		try {
-			for (int i = 0; i < arrBook.size(); i++) {
-				pw.print(arrBook.get(i));
+			for (Book book : arrBook) {
+				pw.println(book.toString());
+				pw.println(); // Add an empty line to separate records
 			}
 			pw.flush();
 			pw.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
-			scanner.next();
 		}
+
 	}
 
+	public ArrayList<Book> readDataFromFile() throws IOException {
+		ArrayList<Book> arrBook = new ArrayList<>();
+		BufferedReader br = new BufferedReader(new FileReader("D:\\practice_java\\src\\projectBE1\\java\\Book.txt"));
+		try {
+			String isbn = "";
+			String title = "";
+			String author = "";
+			double price = 0.0;
+			String line;
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith("ISBN = ")) {
+					isbn = line.substring(7).trim();
+				} else if (line.startsWith("title = ")) {
+					title = line.substring(8).trim();
+				} else if (line.startsWith("price = ")) {
+					price = Double.parseDouble(line.substring(8).trim());
+				} else if (line.startsWith("authorName = ")) {
+					author = line.substring(13).trim();
+					// Create a Book object when all fields are read
+					arrBook.add(new Book(isbn, title, price, author));
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			br.close();
+		}
+		return arrBook;
+	}
 }

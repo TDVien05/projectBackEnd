@@ -22,7 +22,14 @@ public class demoMainFunction {
 			scanner.nextLine();
 			if (flag == 1) {
 				Book bookObj = new Book();
-				bookObj.uploadDataFromFile();
+				arrBook = bookObj.readDataFromFile();
+				for (Book book : arrBook) {
+					System.out.println("ISBN : " + book.ISBN);
+					System.out.println("Title : " + book.title);
+					System.out.println("Price : " + book.price);
+					System.out.println("Author : " + book.authorName);
+					System.out.println();
+				}
 			} else if (flag == 2) {
 				System.out.println("========================ADD BOOK========================");
 				do {
@@ -37,12 +44,16 @@ public class demoMainFunction {
 			} else if (flag == 3) {
 				System.out.println("========================EDIT BOOK========================");
 				int checkEdit = 1;
-				for (int i = 0; i < arrBook.size(); i++) {
-					System.out.println(arrBook.toString());
-				}
+				Book bookObj = new Book();
+				arrBook = bookObj.readDataFromFile();
 				do {
 					for (int i = 0; i < arrBook.size(); i++) {
-						System.out.println(i + arrBook.toString());
+						System.out.println(i);
+						System.out.println("ISBN : " + arrBook.get(i).ISBN);
+						System.out.println("Title : " + arrBook.get(i).title);
+						System.out.println("Price : " + arrBook.get(i).price);
+						System.out.println("Author : " + arrBook.get(i).authorName);
+						System.out.println();
 					}
 					System.out.print("Enter book ID you want to edit : ");
 					int bookID = scanner.nextInt();
@@ -52,28 +63,39 @@ public class demoMainFunction {
 					} else {
 						arrBook.get(bookID).updateBook(arrBook.get(bookID));
 					}
+					bookObj.storeDataToFile(arrBook);
 					System.out.print("Do you want to edit more book || 0 : No || 1 : Yes : ");
 					checkEdit = scanner.nextInt();
 					scanner.nextLine();
 				} while (checkEdit == 1);
 			} else if (flag == 4) {
 				System.out.println("========================DELETE BOOK========================");
-				int bookDelete, checkDelete, stillDelete;
-				for (int i = 0; i < arrBook.size(); i++) {
-					System.out.println(i + arrBook.toString());
+				Book bookObj = new Book();
+				arrBook = bookObj.readDataFromFile();
+				int bookDelete, stillDelete;
+				do {
+					for (int i = 0; i < arrBook.size(); i++) {
+						System.out.println(i);
+						System.out.println("ISBN : " + arrBook.get(i).ISBN);
+						System.out.println("Title : " + arrBook.get(i).title);
+						System.out.println("Price : " + arrBook.get(i).price);
+						System.out.println("Author : " + arrBook.get(i).authorName);
+						System.out.println();
+					}
 					System.out.print("Enter book ID you want to delete : ");
 					bookDelete = scanner.nextInt();
 					scanner.nextLine();
-					System.out.print("Are you sure to delete || 0 : No || 1 : Yes || Enter your choice : ");
-					checkDelete = scanner.nextInt();
-					scanner.nextLine();
-					if (checkAddBook == 1) {
+					if (bookDelete >= arrBook.size() || bookDelete < 0) {
+						System.out.println("Book does not exist");
+					} else {
 						arrBook.remove(bookDelete);
-						System.out.println("Deleted successfully");
-					} else
-						System.exit(0);
-				}
-			} else if (flag == 6) {
+					}
+					bookObj.storeDataToFile(arrBook);
+					System.out.print("Do you want to edit more book || 0 : No || 1 : Yes : ");
+					stillDelete = scanner.nextInt();
+					scanner.nextLine();
+				} while (stillDelete == 1);
+			} else if (flag == 5) {
 				System.out.println("========================THANK YOU FOR YOUR VISITING========================");
 				System.exit(0);
 			}
