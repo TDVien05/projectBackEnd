@@ -1,9 +1,6 @@
-ISBN = fsfds
- title=dfsdf
- price=1222.0
- authorName=fsdf
-
-
-
+ISBN = rere
+ title=wrwer
+ price=1.2324342E7
+ authorName=gdgf
 
 

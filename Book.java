@@ -1,5 +1,8 @@
 package projectBE1.java;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -104,19 +107,38 @@ public class Book implements IActivities {
 	}
 
 	@Override
-	public void uploadDataFromFile(Book book) throws IOException {
-
+	public void uploadDataFromFile() throws FileNotFoundException {
+//		FileReader fr = new FileReader("Book.txt");
+//		BufferedReader br = new BufferedReader(fr);
+//		String line = "";
+//		while (true) {
+//			line = br.readLine();
+//			if (line == null)
+//				break;
+//			System.out.println(line);
+//		}
+		FileReader fr = new FileReader("D:\\practice_java\\src\\projectBE1\\java\\Book.txt");
+		BufferedReader br = new BufferedReader(fr);
+		try {
+			String line = "";
+			while (true) {
+				line = br.readLine();
+				if (line == null)
+					break;
+				System.out.println(line);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void storeDataToFile(ArrayList<Book> arrBook) throws IOException {
 		PrintWriter pw = new PrintWriter("D:\\practice_java\\src\\projectBE1\\java\\Book.txt", "UTF-8");
 		try {
-
 			for (int i = 0; i < arrBook.size(); i++) {
-				pw.println(arrBook.get(i));
+				pw.print(arrBook.get(i));
 			}
-			pw.println("\n");
 			pw.flush();
 			pw.close();
 

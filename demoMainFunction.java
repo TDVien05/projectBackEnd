@@ -16,15 +16,13 @@ public class demoMainFunction {
 			System.out.println("2 : Add new book");
 			System.out.println("3 : Editing a book");
 			System.out.println("4 : Delete a book");
-			System.out.println("5 : Store book to file and exit");
-			System.out.println("6 : Exits");
+			System.out.println("5 : Exits");
 			System.out.print("Choose your option : ");
 			flag = scanner.nextInt();
 			scanner.nextLine();
 			if (flag == 1) {
-				for (int i = 0; i < arrBook.size(); i++) {
-					System.out.println(arrBook.toString());
-				}
+				Book bookObj = new Book();
+				bookObj.uploadDataFromFile();
 			} else if (flag == 2) {
 				System.out.println("========================ADD BOOK========================");
 				do {
@@ -34,6 +32,7 @@ public class demoMainFunction {
 					checkAddBook = scanner.nextInt();
 					scanner.nextLine();
 					arrBook.add(bookObj);
+					bookObj.storeDataToFile(arrBook);
 				} while (checkAddBook != 0);
 			} else if (flag == 3) {
 				System.out.println("========================EDIT BOOK========================");
@@ -74,10 +73,6 @@ public class demoMainFunction {
 					} else
 						System.exit(0);
 				}
-			} else if (flag == 5) {
-				Book bookObj = new Book();
-				bookObj.storeDataToFile(arrBook);
-				System.out.println("========================THANK YOU FOR YOUR VISITING========================");
 			} else if (flag == 6) {
 				System.out.println("========================THANK YOU FOR YOUR VISITING========================");
 				System.exit(0);
