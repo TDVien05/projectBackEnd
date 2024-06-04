@@ -119,7 +119,7 @@ public class Book implements IActivities {
 	@Override
 	public void storeDataToFile(ArrayList<Book> arrBook) throws IOException {
 
-		PrintWriter pw = new PrintWriter("D:\\practice_java\\src\\projectBE1\\java\\Book.txt", "UTF-8");
+		PrintWriter pw = new PrintWriter("Book.txt", "UTF-8");
 		try {
 			for (Book book : arrBook) {
 				pw.println(book.toString());
@@ -135,7 +135,7 @@ public class Book implements IActivities {
 
 	public ArrayList<Book> readDataFromFile() throws IOException {
 		ArrayList<Book> arrBook = new ArrayList<>();
-		BufferedReader br = new BufferedReader(new FileReader("D:\\practice_java\\src\\projectBE1\\java\\Book.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("Book.txt"));
 		try {
 			String isbn = "";
 			String title = "";
