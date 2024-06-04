@@ -1,7 +1,14 @@
-ISBN = 978-3-16-148410-0
-title = Vợ nhặt
-price = 125.345
-authorName = Ngô Tất Tố
+ISBN = 978-3-16-148410-12345
+title = Shin cậu bé bút chì
+price = 35.0
+authorName = Yamato
+
+
+
+ISBN = 978-3-16-148410-1234556
+title = Shin cậu bé bút chì
+price = 35.0
+authorName = Viên
 
 
 

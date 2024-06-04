@@ -12,4 +12,8 @@ public interface IActivities {
 
 	ArrayList<Book> readDataFromFile() throws IOException;
 
+	void searchBookByAuthor(ArrayList<Book> arrBook);
+
+	void searchBookByTitle(ArrayList<Book> arrBook);
+
 }

@@ -94,10 +94,10 @@ public class Book implements IActivities {
 
 	@Override
 	public Book updateBook(Book book) {
-		System.out.print("Enter new title : ");
-		book.title = scanner.nextLine();
 		System.out.print("Enter new ISBN : ");
 		book.ISBN = scanner.nextLine();
+		System.out.print("Enter new title : ");
+		book.title = scanner.nextLine();
 		System.out.print("Enter new price : ");
 		int check = 1;
 		do {
@@ -163,4 +163,35 @@ public class Book implements IActivities {
 		}
 		return arrBook;
 	}
+
+	@Override
+	public void searchBookByAuthor(ArrayList<Book> arrBook) {
+		System.out.print("Enter author name : ");
+		String searchAuthor = scanner.nextLine();
+		for (Book book : arrBook) {
+			if (book.authorName.equalsIgnoreCase(searchAuthor)) {
+				System.out.println("ISBN : " + book.ISBN);
+				System.out.println("Title : " + book.title);
+				System.out.println("Price : " + book.price);
+				System.out.println("Author : " + book.authorName);
+				System.out.println();
+			}
+		}
+	}
+
+	@Override
+	public void searchBookByTitle(ArrayList<Book> arrBook) {
+		System.out.print("Enter title : ");
+		String searchTitle = scanner.nextLine();
+		for (Book book : arrBook) {
+			if (book.title.equalsIgnoreCase(searchTitle)) {
+				System.out.println("ISBN : " + book.ISBN);
+				System.out.println("Title : " + book.title);
+				System.out.println("Price : " + book.price);
+				System.out.println("Author : " + book.authorName);
+				System.out.println();
+			}
+		}
+	}
+
 }
