@@ -16,4 +16,6 @@ public interface IActivities {
 
 	void searchBookByTitle(ArrayList<Book> arrBook);
 
+	void deleteAllBook(ArrayList<Book> arrBook);
+
 }
