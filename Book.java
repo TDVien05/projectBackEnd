@@ -194,4 +194,24 @@ public class Book implements IActivities {
 		}
 	}
 
+	@Override
+	public void deleteAllBook(ArrayList<Book> arrBook) {
+		System.out.println("Do you wannt to delete all book : ");
+		System.out.println("0 : No");
+		System.out.println("1 : Yes");
+		int check = 1, delete = 0;
+		do {
+			try {
+				delete = scanner.nextInt();
+				scanner.nextLine();
+				check = 0;
+			} catch (Exception e) {
+				System.out.println("Invalid value. Enter again !!!");
+				scanner.next();
+			}
+		} while (check == 1);
+		if (delete == 1)
+			arrBook.clear();
+	}
+
 }
